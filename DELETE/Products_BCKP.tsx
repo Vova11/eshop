@@ -1,8 +1,8 @@
-import { ProductItem } from './'
+import { ProductItem } from '../src/products'
 
 export type Product = {
   id: string
-  title: string
+  name: string
   description: string
   quantity: number
 }

@@ -18,7 +18,7 @@ const Button: FC<ButtonProps | AnchorProps> = (props) => {
     return <a className='button' {...props}></a>
   }
 
-  return <button className='button' {...props}></button>
+  return <button {...props}></button>
 }
 
 export default Button

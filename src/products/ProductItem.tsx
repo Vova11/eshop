@@ -1,5 +1,5 @@
 import { type FC } from 'react'
-import { Product } from './Products'
+import { Product } from '../../DELETE/Products_BCKP'
 
 type ProductItemProps = {
   product: Product

@@ -1,39 +1,18 @@
-import './App.css'
-import AppNavbar from './components/AppNavbar'
-import { Products, CreateProduct } from './components/products'
-import { type Product } from './components/products/Products'
-import { AppTitle, AltOfLogo } from './shared'
-import AppImage from './assets/react.svg'
-import { useState } from 'react'
+import { RouterProvider } from 'react-router-dom'
+import {router} from './routes/Routes'
+import { useAppDispatch } from './store/hooks'
+import { refreshUserAsync } from './store/Auth/Auth.service'
+import { useEffect } from 'react'
 
-function App() {
-  const [products, setProducts] = useState<Product[]>([])
+const App = () => {
   
-  function handleAddProduct(product: Product) {
-    setProducts((prevProducts) => {
-      const newProduct: Product = {
-        ...product,
-      }
-      return [...prevProducts, newProduct]
-    })
-  }
+  const dispatch = useAppDispatch()
+  useEffect(() => {
+    console.log('App.tsx component rendered')
+    dispatch(refreshUserAsync())
+  }, [dispatch])
 
-  const handleDeleteProduct = (id: string) => {
-    setProducts((prevProducts) =>
-      prevProducts.filter((product) => product.id !== id)
-    )
-    console.log(`deleted product ID is: ${id}`)
-  }
-
-  return (
-    <>
-      <AppNavbar image={{ src: AppImage, alt: AltOfLogo }}>
-        {AppTitle}
-      </AppNavbar>
-      <CreateProduct onAddProduct={handleAddProduct} />
-      <Products products={products} onDeleteProduct={handleDeleteProduct} />
-    </>
-  )
+  return <RouterProvider router={router} />
 }
 
 export default App

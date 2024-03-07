@@ -27,6 +27,7 @@ const Form = forwardRef<FormHandle, FormProps>(function Form
         },
       }
     })
+    
     function handleSubmit(event: FormEvent<HTMLFormElement>) {
       event.preventDefault()
       const formData = new FormData(event.currentTarget)
